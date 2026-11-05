@@ -2,10 +2,12 @@
 
 These are the instruction files from my talk, ready to drop into a project. There are two matching sets, so pick the one that fits how you build:
 
-- `python/` - uv, pytest, pydantic and pandera, tenacity
-- `javascript/` - Node.js with TypeScript, pnpm, vitest, zod, p-retry
+- `python/` - uv, ruff, mypy, pytest, pydantic and pandera, tenacity
+- `javascript/` - **TypeScript** on Node.js, with pnpm, Biome, vitest, zod, p-retry
 
 Both sets cover the same habits. Only the tools change.
+
+Writing plain JavaScript instead of TypeScript? Use the `javascript/` set and delete the `tsc` step from its `AGENTS.md`. The rest still applies.
 
 ## Before you copy anything
 

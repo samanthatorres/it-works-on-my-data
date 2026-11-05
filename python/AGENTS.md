@@ -3,7 +3,7 @@
 ## About this project
 - What it does: [one or two sentences]
 - Who uses the output: [just me / my team / a report for stakeholders]
-- Stack: Python 3.12, dependencies managed with uv
+- Stack: Python 3.12, dependencies managed with uv, linted and formatted with ruff, type-checked with mypy
 - Sample data with known-good results: `data/sample/` (input) and `data/sample/expected/` (output)
 
 ## How to work with me
@@ -20,11 +20,17 @@
 - If a fix fails twice, stop. Tell me what you tried and suggest reverting to the last working commit instead of stacking more fixes.
 
 ## Definition of done
-Do not tell me a task is done until both of these pass:
+Do not tell me a task is done until all of these pass:
 1. `uv run pytest`
-2. The script runs end to end on `data/sample/` and its output matches `data/sample/expected/`
+2. `uv run ruff check .` and `uv run ruff format --check .`
+3. `uv run mypy .`
+4. The script runs end to end on `data/sample/` and its output matches `data/sample/expected/`
 
-If something fails and you can't fix it, tell me. Don't report success.
+Fix lint and type errors yourself, then list what you changed so formatting fixes don't hide in the diff. If something fails and you can't fix it, tell me. Don't report success.
+
+## Code quality
+- Configure ruff in `pyproject.toml` with `extend-select = ["B"]` under `[tool.ruff.lint]`. The B rules catch likely bugs, not just style.
+- Add type hints to function inputs and outputs.
 
 ## Testing
 - Before fixing a bug, write a test that reproduces it.
@@ -49,7 +55,7 @@ If something fails and you can't fix it, tell me. Don't report success.
 - Don't commit real client or company data. Fixtures and samples should be anonymized.
 
 ## Dependencies
-- Ask before adding a new package.
+- Ask before adding a new package. ruff, mypy and pytest are pre-approved as dev dependencies.
 - Before suggesting one, confirm it exists on PyPI, is spelled correctly, and is actively maintained and used.
 - Prefer the standard library or well-known packages over obscure ones.
 - Keep `uv.lock` committed.
