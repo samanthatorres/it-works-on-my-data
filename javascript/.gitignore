@@ -1,0 +1,21 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*credentials*.json
+*service-account*.json
+*service_account*.json
+
+# Real data stays local. Only the anonymized sample is committed.
+data/*
+!data/sample/
+
+# Node
+node_modules/
+dist/
+coverage/
+
+# Caches and logs
+.cache/
+*.log
+.DS_Store
